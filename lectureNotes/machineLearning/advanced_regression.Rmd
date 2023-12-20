@@ -62,8 +62,9 @@ We call the deviations of the data from the line the **errors**. It is also impo
 ## Introduction to Regression
 The goal is to find estimated values $\hat\beta_0$ and $\hat\beta_1$ for the parameters $\beta_0$ and $\beta_1$ which would provide the "best fit" in some sense for the data points. 
 
-Here, the "best fit" will be understood as in the least-squares approach: a line that minimizes the sum of squared residuals 
-$$\min_{\beta_0,\beta_1}Q(\beta_0,\beta_1)=\sum_{i=1}^n \epsilon_i^2 = \underset{\beta_0,\beta_1}\inf\left\{\sum_{i=1}^n(y_i-\beta_0-x_i\beta_1)^2\right\}.$$
+Here, the "best fit" will be understood as in the __least-squares__ approach: a line that minimizes the sum of squared residuals 
+$$\min_{\beta_0,\beta_1}Q(\beta_0,\beta_1) =  \underset{\beta_0,\beta_1}\inf\left\{\sum_{i=1}^n(y_i-\beta_0-x_i\beta_1)^2\right\}=\inf_{\beta_0,\beta_1}\sum_{i=1}^n \epsilon_i^2.$$
+The least squares estimator (LSE) is the most commonly used method due to its favorable mathematical properties (not shown here). For example, it can be mathematically shown that the LSE is the _minimum variance unbiased linear estimator_--meaning that no unbiased estimator can have a smaller (sampling distrbution) variance for $\hat\beta_0$ and $\hat\beta_1$.  
 
 ## Introduction to regression
 ![](regfigs/rss.png)
@@ -229,8 +230,8 @@ Interpreting this model:
 * The intercept, $\beta_0$ = 17.4 inches (p-value=`5.08e-10`). 
 * Every inch increase in mother's height leads to a $\beta_{mother}$ = 0.32 (p-value<`2e-16`) in `childHeight`.
 * Every inch increase in father's height leads to a $\beta_{father}$ = 0.39 (p-value<`2e-16`) in `childHeight`.
-* `Gender=female` was selected as the reference level, and `gender=male` results in an increase in $\beta_{male}=5.2$ inches (p-value`<2e-16`)
-* The number of children $\beta_children$ is not a significant predictor of child height (p-value=0.0825).
+* `Gender=female` was selected as the reference level, and `gender=male` results in an increase in $\beta_{male}=5.2$ inches (p-value`<2e-16`). _R always chooses the first level of a factor (alphabetically) as the reference._ 
+* The number of children $\beta_{children}$ is not a significant predictor of child height (p-value=0.0825).
 * Multiple $R^2=0.637$ and adjusted $R^2=0.635$, thus `father`, `mother`, and `gender` are moderately strong predictors of `childHeight`.
 
 ## Introduction to Regression
